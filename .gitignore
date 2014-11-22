@@ -1,0 +1,5 @@
+flask/
+tmp/
+*.pyc
+*.db
+*.DS_Store
