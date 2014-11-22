@@ -21,21 +21,17 @@ def before_request():
 @login_required
 def index():
     user = g.user
-    posts = [
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
+    decisions = user.decisions()
     return render_template('index.html',
                            title='Home',
                            user=user,
-                           posts=posts)
+                           decisions=decisions)
 
+@app.route('/decision')
+@login_required
+def make_decision():
+    user = g.user
+    
 
 @app.route('/login', methods=['GET', 'POST'])
 @oid.loginhandler
